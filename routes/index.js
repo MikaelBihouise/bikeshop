@@ -78,8 +78,8 @@ router.post('/create-checkout-session', async (req, res) => {
     payment_method_types: ['card'],
     line_items: panierStripe,
     mode: 'payment',
-    success_url: 'https://myamawingwonderfulbikeshop.herokuapp.com/:3000',
-    cancel_url: 'https://myamawingwonderfulbikeshop.herokuapp.com/:3000',
+    success_url: 'https://myamawingwonderfulbikeshop.herokuapp.com/',
+    cancel_url: 'https://myamawingwonderfulbikeshop.herokuapp.com/',
   });
 
   res.json({ id: session.id });
