@@ -1,0 +1,102 @@
+body{
+  font-family: 'Darker Grotesque', sans-serif;
+} 
+
+a, a:hover{
+  color: white;
+  text-decoration: none;
+}
+
+#picture-header {
+  background-image: url('/images/bike-background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  margin-bottom: 20px;
+}
+
+.card {
+margin-bottom: 20px;
+}
+.basket-img{
+  width: 170px;
+}
+
+.navbar-title {
+  font-size: 1.20rem;
+}
+
+.card-body h5 {
+  line-height: 1.4rem !important;
+  font-size: 1.6rem !important;
+}
+
+.card-body p {
+  line-height: 1.2rem !important;
+  font-size: 1.2rem !important;
+}
+
+.basket {
+  color: #fff;
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.basket i {
+  margin-right: 3px;
+  color: #4ea3ff;
+}   
+
+
+/* Shop css */
+
+.breadcrumb li a{
+  color: #4ea3ff;
+  font-weight: 700;
+}
+
+button i {
+  color: #4ea3ff;
+}
+
+.basket-img {
+  width: 100px;
+}
+
+.btn-checkout {
+  font-weight: 700;
+}
+
+.no-article {
+  color: rgb(247, 34, 34);
+  margin-left: 2.1rem;
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+.input-new-1 {
+  padding: 5px 8px;
+}
+
+/* Médias queries pour smart watch */
+
+@media (max-width: 575.98px) { 
+  .basket span {
+      display: none;
+  }
+}
+
+/* Fin des médias queries pour smart watch */
+
+
+/* Médias queries pour mobile */
+
+@media (min-width: 576px) and (max-width: 767.98px) { 
+  .basket span {
+      display: none;
+  }
+}
+
+/* Fin des médias queries mobile */
+

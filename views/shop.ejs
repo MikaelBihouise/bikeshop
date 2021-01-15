@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+  <title>BikeShop - Shop</title>
+  <script src="https://kit.fontawesome.com/a41e9403cf.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- header -->
+  <nav class="navbar navbar-light bg-dark">
+    <a class="navbar" href="/">
+      <img src="/images/bike-logo.svg" width="50" height="50" class="logo" alt="">
+      <span class="navbar-title align-top"><strong>The Bike Shop Experience</strong></span>
+    </a>
+    <a href="/" class="basket mr-4"><i class="fas fa-times"></i><span> Sortir du panier</span></a>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <nav aria-label="breadcrumb" class="col-12">
+        <ol class="breadcrumb m-3 mt-4">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <h1 class="ml-5"><strong>Basket</strong></h1>
+    </div>
+
+<% if(panier.length <1) {%>
+  <h5 class="no-article">No article in the Basket</h5>
+
+<% } else { %>
+
+    <div class="row">
+      <table class="table col-12 table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Model</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Suppr</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var totalSum = 0; for(var i=0; i<panier.length; i++) { %>
+          <% totalSum += panier[i].prix * panier[i].quantity %>
+          <tr>
+            <th scope="row" class="align-middle"><%= i + 1 %></th>
+            <td><img src="<%= panier[i].url %>" alt="bike 1" class="basket-img"></td>
+            <td class="align-middle"><%= panier[i].nom %></td>
+            <td class="align-middle">
+              <div class="input-group align-middle">
+                <form action="/update-shop" method="post">
+                    <input type="text" class="input-new-1 align-middle" value="<%= panier[i].quantity %>" name="quantity">
+                    <input type="hidden" name="choixVelo" value="<%= i %>">
+                    <button class="btn btn-outline-primary" type="submit" id="button-addon2"><i class="fas fa-sync-alt"></i></button>
+                </form>
+              </div>
+            </td>
+            <td class="align-middle"><%= panier[i].prix %>€</td>
+            <td class="align-middle"><%= panier[i].prix * panier[i].quantity %>€</td>
+            <td class="align-middle"><a href="/deleteshop?delete=<%= i %>"><button class="btn btn-outline-primary"
+                  type="button" id="button-addon2"><i class="fas fa-trash-alt"></i></button></a></td>
+          </tr>
+          <% } %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total Basket :</td>
+            <td><%= totalSum %>€</td>
+            <td></td>
+          </tr>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-12 text-right ">
+        <button id="checkout-button" class="btn btn-primary btn-checkout">Checkout !</button>
+      </div>
+    </div>
+
+    <% } %>
+
+  </div>
+
+
+
+  <!-- scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.jintegrity="
+    sha384-q8+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizcrossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="/javascripts/script.js"></script>
+</body>
+
+</html>
